@@ -7,8 +7,10 @@ function BEPagination() {
   const [page, setPage] = useState(1);
 
   const fetchData = async () => {
-    const response = await fetch(`https://dummyjson.com/products?limit=${pageLimit}&skip=${page * pageLimit}`);
+    console.log(page, pageLimit, page * pageLimit);
+    const response = await fetch(`https://dummyjson.com/products?limit=${pageLimit}&skip=${(page - 1) * pageLimit}`);
     const productData = await response.json();
+    console.log(productData);
     setProducts(productData);
   };
 
